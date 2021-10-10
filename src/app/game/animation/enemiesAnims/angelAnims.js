@@ -1,4 +1,3 @@
-import Phaser from "phaser";
 
 export const createAngelAnims = (anims) => {
   anims.create({
@@ -12,13 +11,4 @@ export const createAngelAnims = (anims) => {
     repeat: -1,
     frameRate: 6,
   });
-
-  // anims.create({
-  //     key: 'Knight-run',
-  //     frames: anims.generateFrameNames('Knight', { start: 0, end: 3, prefix: 'knight_f_run_anim_f', suffix: '.png' }),
-  //     repeat: -1,
-  //     frameRate: 9
-  // })
 };
-
-// module.exports = createLizardAnims

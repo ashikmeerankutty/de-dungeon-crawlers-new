@@ -1,4 +1,3 @@
-import Phaser from "phaser";
 
 export const createkeyAnims = (anims) => {
   anims.create({

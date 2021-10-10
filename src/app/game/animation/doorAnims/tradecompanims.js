@@ -1,4 +1,3 @@
-import Phaser from "phaser";
 
 export const createtradecompAnims = (anims) => {
   anims.create({
@@ -13,8 +12,4 @@ export const createtradecompAnims = (anims) => {
     frameRate: 6,
   });
 
-  // anims.create({
-  //     key: 'spikes-idle',
-  //     frames: [{ key: 'spikes', frame: 'spikes_anim_f0.png' }]
-  // })
 };

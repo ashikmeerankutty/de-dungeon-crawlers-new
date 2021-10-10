@@ -1,4 +1,3 @@
-import Phaser from "phaser";
 
 export const createnewKnightAnims = (anims) => {
   anims.create({
@@ -26,4 +25,3 @@ export const createnewKnightAnims = (anims) => {
   });
 };
 
-// module.exports = createLizardAnims

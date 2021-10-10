@@ -70,8 +70,6 @@ import spiketrap from "./assets/spike_trap.mp3";
 import ghoulsound from "./assets/ghoul_sound.mp3";
 import ghostsound from "./assets/ghost_sound.mp3";
 
-//import weapon from './assets/clink.png'
-
 import { createLizardAnims } from "./animation/enemiesAnims/lizardAnims";
 import { createCharacterAnims } from "./animation/characterAnims/characterAnims";
 import { createdZombieAnims } from "./animation/enemiesAnims/plantZombie";
@@ -97,8 +95,6 @@ import { createtorchburnAnims } from "./animation/doorAnims/torchburnAnims";
 import { createWalltorchAnims } from "./animation/doorAnims/walltorchAnims";
 
 import sceneEvents from "./events/eventsCenter";
-import Heart from "./heart";
-import Coin from "./coins";
 import Lizard from "./enemies/lizard";
 import Treasure from "./treasure/treasure";
 import plantZombies from "./enemies/plantZombie";
@@ -130,7 +126,7 @@ import { Connection } from "@solana/web3.js";
 import * as anchor from "@project-serum/anchor";
 
 var cursors;
-var faune, lizard;
+var faune;
 var hit = 0;
 var _health = 3;
 var healthStateDead = "healthStateDead";
@@ -140,11 +136,9 @@ var healthState = idleHealthState;
 var damageTime = 0;
 var knives;
 var knife;
-var chest;
 var coin = 0;
 var wall_health = 4;
 var keyCount = 0;
-var chainlink;
 var keys;
 var chainlink_count = 0;
 var ghost_health = 4;
@@ -227,10 +221,6 @@ class MyGame extends Phaser.Scene {
     this.load.audio("ghostsound", ghostsound);
 
     cursors = this.input.keyboard.createCursorKeys();
-  }
-
-  setKnives(Knives) {
-    knife = Knives;
   }
 
   create() {
@@ -1489,7 +1479,7 @@ class MyGame extends Phaser.Scene {
     obj2.destroy();
   }
 
-  preUpdate(t, dt) {
+  preUpdate(dt) {
     switch (healthState) {
       case idleHealthState:
         break;
@@ -1501,6 +1491,8 @@ class MyGame extends Phaser.Scene {
           faune.setTint(0xffffff);
           damageTime = 0;
         }
+        break;
+      default:
         break;
     }
   }
@@ -1563,81 +1555,11 @@ class MyGame extends Phaser.Scene {
   }
 }
 
-const sendAlert = () => {
-  alert("hello World");
-};
-
-const loadWeb3 = () => {
-  //alert('Connecting Wallet');
-
-  // if (window.ethereum) {
-  //   window.web3 = new Web3(window.ethereum);
-  //   window.ethereum.enable();
-  // } else if (window.web3) {
-  //   window.web3 = new Web3(window.web3.currentProvider);
-  // } else {
-  //   window.alert(
-  //     "Non ethereum browser detected. You should consider trying Metamask"
-  //   );
-  // }
-};
-
-let contract;
-const loadBlockchainData = () => {
-  // const web3 = window.web3;
-  // const networkId = web3.eth.net.getId();
-  // const networkData = DungeonToken.networks[4];
-  // if (networkData) {
-  //   const abi = [];
-  //   const address = networkData.address;
-  //   contract = new web3.eth.Contract(DungeonToken.abi, address);
-  // } else {
-  //   window.alert("Smart contract not deployed to the detected network");
-  // }
-};
-
 const mintReward = () => {
   console.log("called");
-  // loadBlockchainData();
-
-  // const web3 = window.web3;
-
-  // const accounts = web3.eth.getAccounts();
-  // accounts.then((data) => {
-  //   console.log("data", data);
-  //   contract.methods.reward(data[0]).send({ from: data[0] });
-  // });
-};
-
-const usersNFTCount = () => {
-  // const networkData = TropyChar.networks[4];
-  // const address = networkData.address;
-  // let NFTContract = new web3.eth.Contract(TropyChar.abi, address);
-  // const accounts = web3.eth.getAccounts();
-  // accounts.then((data) => {
-  //   console.log("data", data);
-  //   let nftCount = NFTContract.methods.usersNftCount(data[0]).call();
-  //   nftCount.then((nftData) => {
-  //     console.log(nftData);
-  //   });
-  //   // console.log('nftCount', nftCount.toString());
-  //   NFTContract.methods
-  //     .requestNewRandomTrophy(1, "sagar", 1, data[0])
-  //     .send({ from: data[0] });
-  // });
 };
 
 const rewardNFT = () => {
-  // const networkData = TropyChar.networks[4];
-  // const address = networkData.address;
-  // let NFTContract = new web3.eth.Contract(TropyChar.abi, address);
-  // const accounts = web3.eth.getAccounts();
-  // accounts.then((data) => {
-  //   console.log("data", data);
-  //   NFTContract.methods
-  //     .requestNewRandomTrophy(1, "sagar", 1, data[0])
-  //     .send({ from: data[0] });
-  // });
 };
 
 export const config = {
@@ -1650,12 +1572,10 @@ export const config = {
       gravity: { y: 0 },
     },
   },
+  width: 800,
+  height: 330,
   scale: {
-    mode: Phaser.Scale.FIT,
-    parent: "phaser-example",
-    autoCenter: Phaser.Scale.CENTER_BOTH,
-    width: 800,
-    height: 600,
+    zoom: 2,
   },
 };
 

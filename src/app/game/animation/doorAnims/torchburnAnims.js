@@ -1,4 +1,3 @@
-import Phaser from "phaser";
 
 export const createtorchburnAnims = (anims) => {
   anims.create({

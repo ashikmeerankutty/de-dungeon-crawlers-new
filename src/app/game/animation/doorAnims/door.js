@@ -1,4 +1,3 @@
-import Phaser from "phaser";
 
 export const createdoorAnims = (anims) => {
   anims.create({
@@ -23,17 +22,4 @@ export const createdoorAnims = (anims) => {
     frames: [{ key: "door", frame: "door_fullyopen.png" }],
   });
 
-  //     anims.create({
-  //         key: 'coins',
-  //         frames: anims.generateFrameNames('coin', { start: 0, end: 3, prefix: 'coin_anim_f', suffix: '.png' }),
-  //         repeat: -1,
-  //         frameRate: 5
-  //     })
-
-  //     anims.create({
-  //         key: 'chest-closed',
-  //         frames: [{ key: 'treasure', frame: 'chest_mimic_open_anim_f0.png' }]
-  //     })
 };
-
-// // module.exports = createLizardAnims

@@ -1,10 +1,5 @@
-import Phaser from "phaser";
 
 export const createflaskAnims = (anims) => {
-  // anims.create({
-  //     key: 'key-idle',
-  //     frames: [{ key: 'key', frame: 'keys_anim_f0.png' }]
-  // })
 
   anims.create({
     key: "flask-open",

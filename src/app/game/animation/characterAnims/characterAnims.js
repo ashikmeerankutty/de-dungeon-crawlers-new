@@ -1,4 +1,3 @@
-import Phaser from "phaser";
 
 export const createCharacterAnims = (anims) => {
   anims.create({
