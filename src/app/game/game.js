@@ -124,6 +124,7 @@ import Walltorch from "./treasure/walltorch";
 import { Connection } from "@solana/web3.js";
 // import { GameDataModel } from "./components/web3/provider/state/model";
 import * as anchor from "@project-serum/anchor";
+import { GameDataModel } from "../web3/provider/state/model";
 
 var cursors;
 var faune;
@@ -147,12 +148,16 @@ var tradecomp;
 
 let speed = 150;
 
-const SolanaNetworks = {
+export const SolanaNetworks = {
   DEV: "https://api.devnet.solana.com",
   TEST: "https://api.testnet.solana.com",
   MAIN: "https://api.mainnet-beta.solana.com",
   LOCAL: "http://127.0.0.1:8899",
 };
+
+const opts = {
+  preflightCommitment: "processed"
+}
 class MyGame extends Phaser.Scene {
   constructor() {
     super();
@@ -164,12 +169,13 @@ class MyGame extends Phaser.Scene {
   async init({ wallet }) {
     this._wallet = wallet;
     this._provider = new anchor.Provider(
-      new Connection(SolanaNetworks.LOCAL),
+      new Connection(SolanaNetworks.LOCAL, opts.preflightCommitment),
       wallet,
-      {}
+      opts.preflightCommitment
     );
-    // this._gameModel = new GameDataModel();
-    // await this._gameModel.initialize();
+    console.log(this._provider);
+    this._gameModel = new GameDataModel(this._provider);
+    await this._gameModel.initialize();
   }
 
   preload() {
