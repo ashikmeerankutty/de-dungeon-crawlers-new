@@ -1,1 +1,1 @@
-cp -r target/idl/ ../src/components/web3/idls/
+cp -r target/idl/ ../src/app/web3/idls/
